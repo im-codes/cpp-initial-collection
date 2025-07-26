@@ -1,0 +1,99 @@
+#include <iostream>	// Untuk Input dan Output					
+#include <stdlib.h>	// Untuk mengubah warna background dan huruf		
+#include <sstream> 	// Untuk membuat fungsi format rupiah
+#include <conio.h>  	// Untuk Input tanpa tampilan karakter 
+#include <iomanip>		// untuk mengatur perataan teks
+#include <string.h>	     // fungsi karakter
+#include <limits>		// mengatasi masalah cin loop
+#include <ios>			// mengatasi masalah cin loop
+#include <math.h>		// mengatasi masalah cin loop
+
+using namespace std;
+
+///////////////////////////////////////////////////////////////////////////////////////////////	
+
+void mains(void){
+	
+	int Nilai [ 20 ]; 
+	int i, j, N, l; 
+	int temp, Imin; 
+	
+	cout<<" Masukan Banyak bilangan : "; 
+	cin>>N; 
+	
+	for (i=0; i<N; i++ ) 
+	{ 
+		cout<<"\tElemen ke-"<<i<<" : "; 
+		cin>>Nilai [ i ] ; 
+	} 
+	
+	//Proses Cetak Sebelum Diurutkan 
+	cout<<"\n\n Data sebelum diurut :"; 
+	for(i=0; i<N; i++) 
+		cout<<setw (3)<<Nilai [ i ]; 
+		
+	//Proses pengurutan 
+	for (i=0;i<=N-2; i++) 
+	{ 
+		Imin = i; 
+		for(j=i+1; j<N; j++) 
+		{ 
+			if(Nilai [j] < Nilai [Imin]) 
+				Imin = j; 
+		} 
+		
+		temp = Nilai [i]; 
+		Nilai [i] = Nilai [Imin]; 
+		Nilai [Imin] = temp; 
+		
+		cout<<endl; 
+		for(l=0; l<N; l++) 
+			cout<<setw(3)<<Nilai [l]; 
+	} 
+	
+	cout<<"\n\n Data Setelah di urut ; "; 
+	for(i=0; i<N; i++) 
+		cout<<setw(3)<<Nilai [i];
+}
+
+///////////////////////////////////////////////////////////////////////////////////////////////	
+
+void header(){
+	cout<<endl;
+			cout<<setw(63.5)<<"Lat8_3 - Minimum Sort Pengurutan Secara Menaik\n";
+			cout<<setw(60)<<"By Muhammad Irfan Maulana - 201011401753\n";
+			
+			// Garis Atas			
+			for(int bates_atas=1; bates_atas<=80; bates_atas++){
+			cout<<"=";
+			}
+}
+
+int main(){
+	system("COLOR 0A");
+	string jwb;
+	ulang:
+		system("CLS");
+		header();
+		cout<<endl<<endl; 
+
+
+		mains();			
+			
+		cout<<endl<<endl; 		 
+		cout<<"===========================================================\n\n";		
+		// mencetak keterangan
+		cout<<" Tekan Y untuk mengulang program.\n";
+		cout<<" Tekan apa saja untuk menutup program.";
+		
+		// input jawaban ulang/tidak
+		jwb = getch();
+	
+	
+	/*  program akan kembali ke label ulang 
+       jika diinputkan y atau Y */
+	if(jwb=="y" || jwb=="Y") goto ulang;
+ 	return 0;
+}
+
+
